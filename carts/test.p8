@@ -15,6 +15,11 @@ function _draw()
 end
 -->8
 file1
+salut
+test
+bonjour
+lol
+hehe
 -->8
 file2azeazeaze
 __gfx__
