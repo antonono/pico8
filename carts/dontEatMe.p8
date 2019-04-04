@@ -5,13 +5,20 @@ p = {
 	x=64,
 	y=-20,
 	anim="fall",
+	direction="right",
 	fall={f=0,st=0,sz=4,spd=2/5},
 	fly_in_fall={f=16,st=16,sz=5,spd=2/5}
 }
 
 function controls()
-	if (btn(0)) p.x -= 1
-	if (btn(1)) p.x += 1
+	if (btn(0)) then
+		p.direction="left"
+		p.x -= 1
+	end
+	if (btn(1)) then
+		p.direction="right"
+		p.x += 1
+	end
 	if (btn(3)) p.y += 1
 
 	if(p.anim == "fall"
@@ -59,7 +66,11 @@ end
 
 function _draw()
 	cls()
-	spr(anim_player(),p.x,p.y,2,2)
+	if(p.direction == "left") then
+		spr(anim_player(),p.x,p.y,2,2,false)
+	else
+		spr(anim_player(),p.x,p.y,2,2,true)
+	end
 end
 __gfx__
 00000aaa0000000000000aaa0000000000000aaa0000000000000aaa000000000000000000000000000000000000000000000000000000000000000000000000
