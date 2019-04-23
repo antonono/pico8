@@ -13,6 +13,10 @@ bubble = {
 	x=8,
 	y=128
 }
+background = {
+	x=0,
+	y=0
+}
 
 function controls()
 	if (btn(0)) then
@@ -91,12 +95,13 @@ function _update()
 	autofall()
 
 	bubble.y -= 0.75
+	background.y += 1
 end
 
 function _draw()
 	cls()
 	
-	map(0,0,0,0,16,16)
+	map(0,0,background.x,background.y,16,16)
 	
 	if(p.direction == "left") then
 		spr(anim_player(),p.x,p.y,2,2,false)
