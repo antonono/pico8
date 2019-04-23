@@ -13,11 +13,15 @@ p = {
 function controls()
 	if (btn(0)) then
 		p.direction="left"
-		p.x -= 1
+		if not hit(p.x, p.y, 7, 7) then
+			p.x -= 1
+		end
 	end
 	if (btn(1)) then
 		p.direction="right"
-		p.x += 1
+		if not hit(p.x, p.y, 7, 7) then
+			p.x += 1
+		end
 	end
 	if (btn(3)) p.y += 1
 
@@ -52,6 +56,25 @@ end
 
 function autofall()
 	p.y += 1
+end
+
+function hit(x,y,w,h)
+  collide=false
+  for i=x,x+w,w do
+    if (fget(mget(i/8,y/8))>0) or
+         (fget(mget(i/8,(y+h)/8))>0) then
+          collide=true
+    end
+  end
+  
+  for i=y,y+h,h do
+    if (fget(mget(x/8,i/8))>0) or
+         (fget(mget((x+w)/8,i/8))>0) then
+          collide=true
+    end
+  end
+  
+  return collide
 end
 
 function _update()
