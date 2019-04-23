@@ -15,7 +15,7 @@ bubble = {
 }
 background = {
 	x=0,
-	y=3
+	y=0
 }
 cpt = 0
 
@@ -96,13 +96,7 @@ function _update()
 	autofall()
 
 	bubble.y -= 0.75
-	if(cpt < 3) then
-		background.y -= 1/3
-		cpt = cpt+1
-	else
-		background.y = 0
-		cpt = 0
-	end
+	background.y += 1
 end
 
 function _draw()
