@@ -32,14 +32,14 @@ function controls()
 			p.x += 1
 		end
 	end
-	if (btn(3)) p.y += 1
+	if (btn(3)) p.y += 0.2
 
 	if(p.anim == "fall"
 	or p.anim == "fly_in_fall")
 	then
   if (btn(2)) then
   	p.anim="fly_in_fall"
-  	p.y -= 1.25
+  	p.y -= 0.4
   end
  else
 		if (btn(2)) p.y -= 1
@@ -64,7 +64,7 @@ function anim_player()
 end
 
 function autofall()
-	p.y += 1
+	p.y += 0.2
 end
 
 function hit(x,y,w,h,flag)
