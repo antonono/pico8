@@ -17,6 +17,7 @@ background = {
 	x=0,
 	y=0
 }
+cpt = 0
 
 function controls()
 	if (btn(0)) then
