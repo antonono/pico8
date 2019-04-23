@@ -96,7 +96,13 @@ function _update()
 	autofall()
 
 	bubble.y -= 0.75
-	background.y += 1
+
+	if(cpt < 128) then
+		background.y += 1
+		cpt += 1
+	else
+		background.y = 0
+	end
 end
 
 function _draw()
