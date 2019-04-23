@@ -9,6 +9,10 @@ p = {
 	fall={f=0,st=0,sz=4,spd=2/5},
 	fly_in_fall={f=16,st=16,sz=5,spd=2/5}
 }
+bubble = {
+	x=1,
+	y=128
+}
 
 function controls()
 	if (btn(0)) then
@@ -85,6 +89,8 @@ function _update()
 
 	controls()
 	autofall()
+
+	bubble.y -= 1
 end
 
 function _draw()
@@ -97,6 +103,8 @@ function _draw()
 	else
 		spr(anim_player(),p.x,p.y,2,2,true)
 	end
+
+	spr(64,bubble.x,bubble.y)
 end
 __gfx__
 00000aaa0000000000000aaa0000000000000aaa0000000000000aaa000000000000000000000000000000000000000000000000000000000000000000000000
