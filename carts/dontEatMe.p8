@@ -13,13 +13,13 @@ p = {
 function controls()
 	if (btn(0)) then
 		p.direction="left"
-		if not hit(p.x-1, p.y, 1, 1, 7) then
+		if not hit(p.x+4, p.y, 1, 1, 7) then
 			p.x -= 1
 		end
 	end
 	if (btn(1)) then
 		p.direction="right"
-		if not hit(p.x+1, p.y, 1, 1, 7) then
+		if not hit(p.x+10, p.y, 1, 1, 7) then
 			p.x += 1
 		end
 	end
