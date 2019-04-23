@@ -66,6 +66,9 @@ end
 
 function _draw()
 	cls()
+	
+	map(0,0,0,0,16,16)
+	
 	if(p.direction == "left") then
 		spr(anim_player(),p.x,p.y,2,2,false)
 	else
