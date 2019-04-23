@@ -98,17 +98,18 @@ function _update()
 	bubble.y -= 0.75
 
 	if(cpt < 128) then
-		background.y += 1
+		background.y -= 1
 		cpt += 1
 	else
 		background.y = 0
+		cpt = 0
 	end
 end
 
 function _draw()
 	cls()
 	
-	map(0,0,background.x,background.y,16,16)
+	map(0,0,background.x,background.y,16,32)
 	
 	if(p.direction == "left") then
 		spr(anim_player(),p.x,p.y,2,2,false)
