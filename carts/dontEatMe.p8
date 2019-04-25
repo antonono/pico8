@@ -55,8 +55,6 @@ function controls()
 			p.y += 1
 		else
 			initfirstroom()
-			cam.x = 0
-			cam.y = 0
 		end
 	end
 	if (btn(0)) then
@@ -118,6 +116,8 @@ function initfirstroom()
 	p.y = -16
 	p.anim = "fall"
 	p.direction = "right"
+	cam.x = 0
+	cam.y = 0
 end
 
 function anim(a)
