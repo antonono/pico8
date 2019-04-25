@@ -62,7 +62,7 @@ function controls()
 		p.direction="left"
 		if (not hit(p.x+4, p.y+15, 1, 1, 7) and firstroom) then
 			p.x -= 1
-		elseif (not hit(p.x+65, p.y+6, 1, 1, 6) and secondroom) then
+		elseif (secondroom) then
 			if (p.x-cam.x<(64-allowance)) then
    				cam.x-=speed
   			end
@@ -73,7 +73,7 @@ function controls()
 		p.direction="right"
 		if (not hit(p.x+10, p.y+15, 1, 1, 7) and firstroom) then
 			p.x += 1
-		elseif (not hit(p.x+65, p.y+6, 1, 1, 6) and secondroom) then
+		elseif (secondroom) then
 			if (p.x-cam.x>(64+allowance)) then
    				cam.x+=speed
   			end
