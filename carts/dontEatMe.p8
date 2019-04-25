@@ -22,11 +22,17 @@ background = {
 cpt = 0
 firstroom = true
 secondroom = false
+finishroom = false
 transition = false
 
 p_map_secondroom = {
 	x=65,
 	y=6
+}
+
+p_map_finishroom = {
+	x=16,
+	y=0
 }
 
 cam={
@@ -42,6 +48,11 @@ function controls()
 		initfirstroom()
 	end
 	if(p.anim == "flap") then
+		if (hit(p.x+520, p.y+47, 1, 1, 2) and hit(p.x+520, p.y+61, 1, 1, 2)) then
+			secondroom = false
+			transition = true
+			finishroom = true
+		end
 		if (btn(2)) then
 			if (p.y-cam.y<(64-allowance)) then
    				cam.y-=speed
@@ -219,6 +230,12 @@ function _draw()
 		else
 			spr(anim_player(),p.x,p.y,2,2,true)
 		end
+	elseif finishroom then
+		camera(0,0)
+
+		background.x = 0
+		background.y = 0
+		map(p_map_finishroom.x,p_map_finishroom.y,background.x,background.y,16,16)
 	end
 end
 __gfx__
