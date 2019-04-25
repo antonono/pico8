@@ -54,9 +54,7 @@ function controls()
   			end
 			p.y += 1
 		else
-			transition = true
-			p.y = 16
-			p.x = 62
+			initfirstroom()
 			cam.x = 0
 			cam.y = 0
 		end
@@ -84,7 +82,7 @@ function controls()
 		end
 	end
 	if (btn(3) and (p.anim != "flap")) then
-		p.y += 0.2
+		p.y += 3
 	end
 	if(p.anim == "fall" or p.anim == "fly_in_fall") then
   		if (btn(2)) then
@@ -99,6 +97,9 @@ function controls()
 end
 
 function initfirstroom()
+	firstroom = true
+	secondroom = false
+	transition = false
 	background.x = 0
 	background.y = 0
 	cpt = 0
@@ -184,6 +185,7 @@ function _draw()
 	cls()
 	
 	if firstroom then
+		camera(cam.x,cam.y)
 		map(0,0,background.x,background.y,16,48)
 		if(p.direction == "left") then
 			spr(anim_player(),p.x,p.y,2,2,false)
