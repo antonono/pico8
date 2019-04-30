@@ -28,6 +28,8 @@ texttransition2 = false
 secondroom = false
 finishroom = false
 transition = false
+thistime = 0
+endtime = 0
 
 p_map_secondroom = {
 	x=65,
@@ -55,7 +57,7 @@ function controls()
 		if (hit(p.x+520, p.y+47, 1, 1, 2) and hit(p.x+520, p.y+61, 1, 1, 2)) then
 			secondroom = false
 			transition = true
-			finishroom = true
+			premierefois=true
 		end
 		if (btn(2)) then
 			if (p.y-cam.y<(64-allowance)) then
@@ -152,9 +154,12 @@ end
 function initfirstroom()
 	menu = false
 	transition1 = false
-	firstroom = true
+	firstroom = false
 	secondroom = false
 	transition = false
+	finishroom = true
+	premierefois = true
+	finalroom = false
 	texttransition1=false
 	texttransition2=false
 	background.x = 0
@@ -250,7 +255,7 @@ function _update()
 		if(p.anim == "fly_in_fall") then
 			p.anim="fall"
 		end
-		if(p.y) > 80 then
+		if(p.y) > 78 then
 			transition1 = false
 			texttransition1 = true
 		end
@@ -260,12 +265,26 @@ function _update()
 		p.y=2
 		controls()
 	end
+	if finishroom then
+		thistime = time()
+		if(thistime > endtime) then
+			if(p.anim == "fly_in_fall") then
+				p.anim="fall"
+			end
+		controls()
+		autofall()
+		end
+		if(p.y) > 104 then
+			finishroom = false
+			finalroom = true
+		end
+	end
 end
 
 function _draw()
 	cls()
 	if menu then
-		p.x = 32
+		p.x = 47
 		p.y = 16
 		camera(cam.x,cam.y)
 		map(16,16,background.x,background.y,16,16)
@@ -279,7 +298,7 @@ function _draw()
 	elseif transition1 then
 		camera(cam.x,cam.y)
 		map(32,16,background.x,background.y,16,16)
-		spr(anim_player(),p.x+15,p.y,2,2,true)
+		spr(anim_player(),p.x,p.y,2,2,true)
 	elseif texttransition1 then
 		camera(cam.x,cam.y)
 		map(32,32,background.x,background.y,16,16)
@@ -312,10 +331,28 @@ function _draw()
 			spr(anim_player(),p.x,p.y,2,2,true)
 		end
 	elseif finishroom then
+		if premierefois then
+			p.x=52
+		  p.y=64
+			p.anim=nil
+			endtime = time() + 5
+			premierefois=false
+		end
 		camera(0,0)
 		background.x = 0
 		background.y = 0
 		map(p_map_finishroom.x,p_map_finishroom.y,background.x,background.y,16,16)
+		spr(anim_player(),p.x,p.y,2,2,true)
+		spr(95,50,64)
+		spr(95,56,64)
+		spr(117,50,72)
+		spr(117,56,72)
+		spr(117,62,72)
+	elseif finalroom then
+		camera(0,0)
+		background.x = 0
+		background.y = 0
+		map(32,0,background.x,background.y,16,16)
 	end
 end
 __gfx__
