@@ -1,9 +1,5 @@
 TODO
 
-Faire le personnage
 Faire un mob
 Faire un soleil
 
-
-Ecrire toute les lignes entre cinematiques
-Gerer répartition des mobs
