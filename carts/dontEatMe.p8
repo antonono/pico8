@@ -304,7 +304,8 @@ function controls()
 	if(texttransition1) then
 		if(btn(5)) then
 		    texttransition1 = false
-			initfirstroom()
+				texttransition3= true
+				premierefois = true 
 		end
 	end
 end
@@ -342,6 +343,7 @@ function initfirstroom()
 	finalroom = false
 	texttransition1=false
 	texttransition2=false
+	texttransition3=false
 	background.x = 0
 	background.y = 0
 	cpt = 0
@@ -512,6 +514,13 @@ function _update()
 			texttransition2 = false
 		end
 	end
+	if texttransition3 then
+		thistime = time()
+		if(thistime > endtime) and not premierefois then
+			initfirstroom()
+			texttransition3 = false
+		end
+	end
 end
 
 function _draw()
@@ -673,6 +682,16 @@ function _draw()
 		map(16,48,background.x,background.y,16,16)
 		print("centre international",17,50)
 		print("de valbonne",35,57)
+	elseif texttransition3 then
+		if premierefois then
+			endtime = time() + 3
+			premierefois = false
+		end
+		camera(0,0)
+		background.x = 0
+		background.y = 0
+		map(16,48,background.x,background.y,16,16)
+		print("la gorge",35,57)
 	end
 end
 __gfx__
