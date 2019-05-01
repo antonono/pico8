@@ -14,6 +14,128 @@ bubble = {
 	x=8,
 	y=128
 }
+image1monstre = 72
+image2monstre = 104
+
+function changeapparence(apparence)
+	compteurmonstre=compteurmonstre+1
+	if(apparence==image1monstre) then
+		if(compteurmonstre==8) then
+		compteurmonstre=0
+		return image2monstre
+		end
+		return image1monstre
+	else
+		if(compteurmonstre==8) then
+		compteurmonstre=0
+		return image1monstre
+		end
+		return image2monstre
+	end
+end
+
+compteurmonstre = 0
+apparencemonstre = image1monstre
+monstre1 = {
+	x=24,
+	y=40
+}
+monstre2 = {
+	x=152,
+	y=40
+}
+monstre3 = {
+	x=224,
+	y=8
+}
+monstre4 = {
+	x=360,
+	y=40
+}
+monstre5 = {
+	x=448,
+	y=40
+}
+monstre6 = {
+	x=360,
+	y=88
+}
+monstre7 = {
+	x=272,
+	y=120
+}
+monstre8 = {
+	x=208,
+	y=120
+}
+monstre9 = {
+	x=144,
+	y=120
+}
+monstre10 = {
+	x=88,
+	y=88
+}
+monstre11= {
+	x=24,
+	y=200
+}
+monstre12= {
+	x=152,
+	y=200
+}
+monstre13= {
+	x=224,
+	y=168
+}
+monstre14= {
+	x=280,
+	y=200
+}
+monstre15= {
+	x=360,
+	y=200
+}
+monstre16= {
+	x=448,
+	y=200
+}
+monstre17= {
+	x=472,
+	y=280
+}
+monstre18= {
+	x=368,
+	y=280
+}
+monstre19= {
+	x=312,
+	y=248
+}
+monstre20= {
+	x=248,
+	y=280
+}
+monstre21= {
+	x=144,
+	y=280
+}
+monstre22= {
+	x=88,
+	y=248
+}
+monstre23= {
+	x=408,
+	y=424
+}
+monstre24= {
+	x=344,
+	y=392
+}
+monstre25= {
+	x=208,
+	y=400
+}
 background = {
 	x=0,
 	y=0
@@ -194,8 +316,8 @@ end
 function initfirstroom()
 	menu = false
 	transition1 = false
-	firstroom = true
-	secondroom = false
+	firstroom = false
+	secondroom = true
 	transition = false
 	finishroom = false
 	premierefois = false
@@ -289,6 +411,7 @@ function _update()
 			transition = false
 			p.anim = "flap"
 		else
+			apparencemonstre=changeapparence(apparencemonstre)
 			controls()
 		end
 	end
@@ -394,6 +517,31 @@ function _draw()
 		background.x = 0
 		background.y = 0
 		map(p_map_secondroom.x,p_map_secondroom.y,background.x,background.y,64,128)
+		spr(apparencemonstre,monstre1.x,monstre1.y,2,2)
+		spr(apparencemonstre,monstre2.x,monstre2.y,2,2)
+		spr(apparencemonstre,monstre3.x,monstre3.y,2,2)
+		spr(apparencemonstre,monstre4.x,monstre4.y,2,2)
+		spr(apparencemonstre,monstre5.x,monstre5.y,2,2)
+		spr(apparencemonstre,monstre6.x,monstre6.y,2,2)
+		spr(apparencemonstre,monstre7.x,monstre7.y,2,2)
+		spr(apparencemonstre,monstre8.x,monstre8.y,2,2)
+		spr(apparencemonstre,monstre9.x,monstre9.y,2,2)
+		spr(apparencemonstre,monstre10.x,monstre10.y,2,2)
+		spr(apparencemonstre,monstre11.x,monstre11.y,2,2)
+		spr(apparencemonstre,monstre12.x,monstre12.y,2,2)
+		spr(apparencemonstre,monstre13.x,monstre13.y,2,2)
+		spr(apparencemonstre,monstre14.x,monstre14.y,2,2)
+		spr(apparencemonstre,monstre15.x,monstre15.y,2,2)
+		spr(apparencemonstre,monstre16.x,monstre16.y,2,2)
+		spr(apparencemonstre,monstre17.x,monstre17.y,2,2)
+		spr(apparencemonstre,monstre18.x,monstre18.y,2,2)
+		spr(apparencemonstre,monstre19.x,monstre19.y,2,2)
+		spr(apparencemonstre,monstre20.x,monstre20.y,2,2)
+		spr(apparencemonstre,monstre21.x,monstre21.y,2,2)
+		spr(apparencemonstre,monstre22.x,monstre22.y,2,2)
+		spr(apparencemonstre,monstre23.x,monstre23.y,2,2)
+		spr(apparencemonstre,monstre24.x,monstre24.y,2,2)
+		spr(apparencemonstre,monstre25.x,monstre25.y,2,2)
 		if(p.direction == "left") then
 			spr(anim_player(),p.x,p.y,2,2,false)
 		else
