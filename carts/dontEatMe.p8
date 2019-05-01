@@ -460,6 +460,11 @@ function _update()
 		controls()
 		autofall()
 		end
+		if(p.y) < 64 and not premierefois then
+			easteregg = true
+			premierefois = true
+			finishroom = false
+		end
 		if(p.y) > 104 and not premierefois then
 			finishroom = false
 			premierefois = true
@@ -488,6 +493,12 @@ function _update()
 		thistime = time()
 		apparencebanane=changeapparence(apparencebanane)
 		if(thistime > endtime) and not premierefois then
+			initmenu()
+		end
+	end
+	if easteregg then
+		thistime = time()
+		if(thistime > endendtime) and not premierefois then
 			initmenu()
 		end
 	end
@@ -628,6 +639,19 @@ function _draw()
 		print("les lieux et ville",10,83)
 		print("comme valbonne ou bien",10,90)
 		print("sophia antipolis",10,97)
+	elseif easteregg then
+		if premierefois then
+			endendtime = time() + 5
+			premierefois = false
+		end
+		camera(0,0)
+		background.x = 0
+		background.y = 0
+		map(16,48,background.x,background.y,16,16)
+		print("que faites vous ?",10,35)
+		print("vous etes une banane",10,42) 
+		print("pas une super banane et",10,49)
+		print("encore moins un supositoire",10,56)
 	end
 end
 __gfx__
