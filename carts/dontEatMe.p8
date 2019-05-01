@@ -410,8 +410,8 @@ end
 function _update()
 	if (p.y >= 256) and (firstroom == true) then
 		firstroom = false
-		secondroom = true
-		transition = true
+		texttransition4 = true
+		premierefois = true
 		p.y = 16
 	end
 
@@ -519,6 +519,14 @@ function _update()
 		if(thistime > endtime) and not premierefois then
 			initfirstroom()
 			texttransition3 = false
+		end
+	end
+	if texttransition4 then
+		thistime = time()
+		if(thistime > endtime) and not premierefois then
+			secondroom = true
+			transition = true
+			texttransition4 = false
 		end
 	end
 end
@@ -692,6 +700,16 @@ function _draw()
 		background.y = 0
 		map(16,48,background.x,background.y,16,16)
 		print("la gorge",35,57)
+	elseif texttransition4 then
+		if premierefois then
+			endtime = time() + 3
+			premierefois = false
+		end
+		camera(0,0)
+		background.x = 0
+		background.y = 0
+		map(16,48,background.x,background.y,16,16)
+		print("les intestins",35,57)
 	end
 end
 __gfx__
