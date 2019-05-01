@@ -6,6 +6,7 @@ p = {
 	y=-16,
 	anim="fall",
 	direction="right",
+	imagecourante=bananefin,
 	fall={f=0,st=0,sz=4,spd=2/5},
 	fly_in_fall={f=16,st=16,sz=5,spd=2/5},
 	flap={f=16,st=16,sz=5,spd=2/5}
@@ -25,17 +26,30 @@ function changeapparence(apparence)
 		return image2monstre
 		end
 		return image1monstre
-	else
+	elseif(apparence==image2monstre) then
 		if(compteurmonstre==8) then
 		compteurmonstre=0
 		return image1monstre
 		end
 		return image2monstre
+	elseif(apparence==bananefin) then
+		if(compteurmonstre==8) then
+		compteurmonstre = 0 
+		return bananefin2
+		end
+		return bananefin
+	else
+		if(compteurmonstre==8) then
+		compteurmonstre = 0
+		return bananefin
+		end
+		return bananefin2
 	end
 end
 
 compteurmonstre = 0
 apparencemonstre = image1monstre
+apparencebanane = bananefin
 monstre1 = {
 	x=24,
 	y=40
@@ -145,6 +159,9 @@ poisson = {
 	y=90,
 	anim=nil
 }
+
+bananefin = 40
+bananefin2 = 32
 bienjoue = false
 endendtime = 0
 music(0)
@@ -356,6 +373,8 @@ function anim_player()
 	  return anim(p.flap)
 	elseif(p.anim == "respirer") then
 		return anim(p.flap)
+	elseif(p.anim == "joie") then
+		return(p.anim)
 	end
 end
 
@@ -467,6 +486,7 @@ function _update()
 	end
 	if bienjoue then
 		thistime = time()
+		apparencebanane=changeapparence(apparencebanane)
 		if(thistime > endtime) and not premierefois then
 			initmenu()
 		end
@@ -559,7 +579,7 @@ function _draw()
 		background.x = 0
 		background.y = 0
 		map(p_map_finishroom.x,p_map_finishroom.y,background.x,background.y,16,16)
-		spr(anim_player(),p.x,p.y,2,2,true)
+		spr(anim_player,p.x,p.y,2,2,true)
 		spr(95,50,64)
 		spr(95,56,64)
 		spr(117,50,72)
@@ -593,14 +613,14 @@ function _draw()
 		spr(115,32,58)
 	elseif bienjoue then
 	if premierefois then
-		endtime = time() + 5
+		endtime = time() + 10
 		premierefois = false	
 	end
 		camera(0,0)
 		background.x = 0
 		background.y = 0
 		map(16,48,background.x,background.y,16,16)
-		spr(anim_player(),50,32,2,2)
+		spr(apparencebanane,50,32,2,2)
 		print("felicitations vous avez",10,55)
 		print("gagne",50,62)
 		print("morale de l'histoire un jour",10,69)
