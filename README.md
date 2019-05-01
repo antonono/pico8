@@ -19,6 +19,9 @@ Nous avons réalisé sans aide extérieure le code (en LUA), excepté pour la fo
 
 Les images, la map et la musique ont été entièrement imaginées, dessinées et intégrées au projet sans copie extérieure.
 
+## EasterEgg
+Vous trouverez dans une animation un easteregg.
+
 ### Liens utiles
 * Page HTML du jeu: http://poloproduction83.free.fr/iut/pico8/donteatme.html
 Il se peut cependant que la musique ne soit pas disponible sur tous les navigateurs.
@@ -26,4 +29,6 @@ Il se peut cependant que la musique ne soit pas disponible sur tous les navigate
 * Vidéo Youtube: https://youtu.be/8b83I3g9IWs
 
 * Vidéo Youtube accélérée (durée < 1min): https://youtu.be/M3c3Ru3e--I
+
+* Google Form astuce a ne regarder que si c'est trop difficile: https://docs.google.com/document/d/1GmZDhAU3pXp4TjmB01UYdZppGSiB8UZavvu3jQbiTXI/edit?usp=sharing
 
