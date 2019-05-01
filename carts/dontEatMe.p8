@@ -296,7 +296,8 @@ function controls()
 	end
 	if(menu) then
 		if(btn(5)) then
-			transition1=true
+			texttransition2 = true
+			premierefois = true
 			menu = false
 		end
 	end
@@ -493,13 +494,22 @@ function _update()
 		thistime = time()
 		apparencebanane=changeapparence(apparencebanane)
 		if(thistime > endtime) and not premierefois then
+			bienjoue = false
 			initmenu()
 		end
 	end
 	if easteregg then
 		thistime = time()
 		if(thistime > endendtime) and not premierefois then
+			easteregg = false
 			initmenu()
+		end
+	end
+	if texttransition2 then
+		thistime = time()
+		if(thistime > endtime) and not premierefois then
+			transition1 = true
+			texttransition2 = false
 		end
 	end
 end
@@ -652,6 +662,17 @@ function _draw()
 		print("vous etes une banane",10,42) 
 		print("pas une super banane et",10,49)
 		print("encore moins un supositoire",10,56)
+	elseif texttransition2 then
+		if premierefois then
+			endtime = time() + 3
+			premierefois = false
+		end
+		camera(0,0)
+		background.x = 0
+		background.y = 0
+		map(16,48,background.x,background.y,16,16)
+		print("centre international",17,50)
+		print("de valbonne",35,57)
 	end
 end
 __gfx__
