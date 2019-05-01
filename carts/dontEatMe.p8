@@ -316,8 +316,8 @@ end
 function initfirstroom()
 	menu = false
 	transition1 = false
-	firstroom = false
-	secondroom = true
+	firstroom = true
+	secondroom = false
 	transition = false
 	finishroom = false
 	premierefois = false
@@ -496,7 +496,7 @@ function _draw()
 		map(32,32,background.x,background.y,16,16)
 		print("vous voila dans la peau d'une",0,0,7)
 		print("banane.. quel jeu de mot",0,6,7)
-		print("vous devez vous echappez le plus",0,15,7)
+		print("vous devez vous echapper le plus",0,15,7)
 		print("vite possible du corps de ce",0,21,7)
 		print("valbonnais",40,27,7)
 		print("attention a vous vous n'avez",0,36,7)
@@ -603,7 +603,7 @@ function _draw()
 		spr(anim_player(),50,32,2,2)
 		print("felicitations vous avez",10,55)
 		print("gagne",50,62)
-		print("moral de l'histoire un jour",10,69)
+		print("morale de l'histoire un jour",10,69)
 		print("on se fera tous manger sauf",10,76)
 		print("les lieux et ville",10,83)
 		print("comme valbonne ou bien",10,90)
