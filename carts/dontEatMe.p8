@@ -233,7 +233,7 @@ function controls()
 			secondroom = false
 			transition = true
 			premierefois=true
-			finishroom=true
+			texttransition5=true
 		end
 		if (btn(2)) then
 			if (p.y-cam.y<(64-allowance)) then
@@ -471,7 +471,7 @@ function _update()
 		if(p.y) > 104 and not premierefois then
 			finishroom = false
 			premierefois = true
-			finalroom = true
+			texttransition6 = true
 		end
 	end
 	if finalroom then
@@ -527,6 +527,22 @@ function _update()
 			secondroom = true
 			transition = true
 			texttransition4 = false
+		end
+	end
+	if texttransition5 then
+		thistime = time()
+		if(thistime > endtime) and not premierefois then
+			finishroom = true
+			premierefois = true
+			texttransition5 = false
+		end
+	end
+	if texttransition6 then
+		thistime = time()
+		if(thistime > endtime) and not premierefois then
+			finalroom = true
+			premierefois = true
+			texttransition6 = false
 		end
 	end
 end
@@ -710,6 +726,27 @@ function _draw()
 		background.y = 0
 		map(16,48,background.x,background.y,16,16)
 		print("les intestins",35,57)
+	elseif texttransition5 then
+		if premierefois then
+			endtime = time() + 3
+			premierefois = false
+		end
+		camera(0,0)
+		background.x = 0
+		background.y = 0
+		map(16,48,background.x,background.y,16,16)
+		print("valbonne village",22,57)
+	elseif texttransition6 then
+		if premierefois then
+			endtime = time() + 3
+			premierefois = false
+		end
+		camera(0,0)
+		background.x = 0
+		background.y = 0
+		map(16,48,background.x,background.y,16,16)
+		print("sortie station epuration",22,57)
+		print("la brague",50,64)
 	end
 end
 __gfx__
